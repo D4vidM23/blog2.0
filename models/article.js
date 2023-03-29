@@ -1,4 +1,5 @@
 'use strict';
+const moment = require('moment')
 const {
   Model
 } = require('sequelize');
@@ -24,6 +25,12 @@ module.exports = (sequelize, DataTypes) => {
     image_url: DataTypes.STRING,
     author_id: DataTypes.INTEGER,
     published_on: DataTypes.DATE,
+    friendlyPublishedDate: {
+      type: DataTypes.VIRTUAL,
+      get(){
+        return moment(this.published_on).format('MMMM Do, YYYY')
+      }
+    }
   }, {
     sequelize,
     modelName: 'Article',
