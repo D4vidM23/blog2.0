@@ -11,5 +11,5 @@ router.post('/article/add', articleController.addArticle);
 
 router.get('/article/:articleId', articleController.displayArticle);
 router.get('/article/', articleController.displayAll);
-
+router.get('/article/:articleId/edit',articleController.renderEditForm)
 module.exports = router;
